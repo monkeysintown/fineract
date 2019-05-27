@@ -25,7 +25,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-@Component
+@Component // bean name = "sample1Job"
 public class Sample1Job implements FlexJob {
     private static final Logger logger = LoggerFactory.getLogger(Sample1Job.class);
 

@@ -43,7 +43,7 @@ public class FlexJobBean extends QuartzJobBean {
 
         JobDataMap jobDataMap = context.getMergedJobDataMap();
 
-        String name = jobDataMap.getString("name");
+        String name = jobDataMap.getString("name"); // "sample1Job"
 
         if(StringUtils.isEmpty(name)) {
             throw new RuntimeException("Missing bean name for Flex Job!");
