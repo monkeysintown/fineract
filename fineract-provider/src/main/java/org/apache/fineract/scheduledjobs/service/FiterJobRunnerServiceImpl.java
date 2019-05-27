@@ -16,25 +16,30 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.apache.fineract.infrastructure.flexjobs.jobs;
+package org.apache.fineract.scheduledjobs.service;
 
+import org.apache.fineract.infrastructure.jobs.annotation.CronTarget;
+import org.apache.fineract.infrastructure.jobs.service.JobName;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@Component
-public class Sample1Job implements FlexJob {
-    private static final Logger logger = LoggerFactory.getLogger(Sample1Job.class);
-
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
+@Service
+public class FiterJobRunnerServiceImpl implements FiterJobRunnerService {
+    private static final Logger logger = LoggerFactory.getLogger(FiterJobRunnerServiceImpl.class);
 
     @Transactional
     @Override
-    public void execute() {
+    @CronTarget(jobName = JobName.FITER_SAMPLE1)
+    public void sample1() {
         logger.warn("Execute Sample Job 1");
+    }
+
+    @Transactional
+    @Override
+    @CronTarget(jobName = JobName.FITER_SAMPLE2)
+    public void sample2() {
+        logger.warn("Execute Sample Job 2");
     }
 }
